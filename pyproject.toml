@@ -1,0 +1,32 @@
+[project]
+name = "raman-spectra"
+version = "0.1.0"
+description = "Analysis of raman spectra using ML"
+readme = "README.md"
+authors = [
+    { name = "Nicolas Brosse", email = "nbrosse@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "kaleido>=1.2.0",
+    "notebook>=7.4.3",
+    "numpy>=2.3.1",
+    "pandas>=2.3.0",
+    "plotly[express]>=6.2.0",
+    "ramanspy>=0.2.10",
+    "scikit-learn>=1.7.0",
+    "scipy>=1.16.0",
+    "seaborn>=0.13.2",
+    "torch>=2.7.1",
+    "tqdm>=4.67.1",
+    "xformers>=0.0.31.post1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ipython>=9.3.0",
+]
