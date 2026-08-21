@@ -22,10 +22,11 @@ def build_standard_pipeline(
     """Build a standard RamanSPy preprocessing pipeline.
     
     Pipeline includes:
-    - Cropping to fingerprint region (optional)
+    - Cropping to 300-1942 cm-1 (optional), the largest range common to the
+      eight instruments of the challenge dataset
     - Whitaker-Hayes cosmic ray removal
     - Savitzky-Golay smoothing (window=9, polyorder=3)
-    - ASPLS baseline correction
+    - asPLS (adaptive smoothness penalized least squares) baseline correction
     - MinMax normalization (optional)
     
     Parameters
