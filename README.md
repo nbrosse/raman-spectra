@@ -1,6 +1,6 @@
 # raman-spectra
 
-This code accompanies the blog post [Analyzing Raman Spectra with Machine Learning](https://www.nbrosse.com/posts/raman/raman.html).
+This code accompanies the blog post [Analyzing Raman spectra with machine learning](https://nbrosse.github.io/posts/raman/raman.html).
 
 The repository includes notebooks for exploratory data analysis and training traditional PLS models for concentration prediction (see the `notebooks` folder).
 
@@ -38,6 +38,13 @@ data/
 │   ├── timegate.csv
 │   └── tornado.csv
 ```
+
+## Notebooks
+
+The `notebooks` folder holds the classical part of the analysis, and corresponds to the two embedded notebooks of the blog post. Both expect the data laid out as above and are run one instrument at a time.
+
+- **`eda.ipynb`** — explores the challenge dataset: how the multi-instrument spectra are stored, what a raw spectrum looks like, and what each preprocessing step does to it. It also compares the standard pipeline against a background-subtraction alternative, on spectra from different concentrations and on replicates of a single one.
+- **`ml.ipynb`** — fits PLS regression models predicting the three analyte concentrations from preprocessed spectra. It works through the normalization trade-off, selects the number of latent components by grouped cross-validation, and compares a single multi-output model against one model per analyte.
 
 ## Overview of SpecBERT
 
@@ -238,10 +245,10 @@ The preprocessing module provides integration with RamanSPy for standard spectra
 
 **`build_standard_pipeline(crop_region=(300, 1942), normalize=False)`**
 - Creates a standard preprocessing pipeline with:
-  1. Cropping to fingerprint region (optional)
+  1. Cropping to 300–1942 cm⁻¹ (optional) — the largest range common to the eight instruments
   2. Whitaker-Hayes cosmic ray removal
   3. Savitzky-Golay smoothing (window=9, polyorder=3)
-  4. ASPLS baseline correction
+  4. asPLS (adaptive smoothness penalized least squares) baseline correction
   5. MinMax normalization (optional)
 - Set `normalize=True` for classification, `False` for regression
 
